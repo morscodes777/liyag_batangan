@@ -1,0 +1,1125 @@
+.product-list-container {
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
+}
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #FFD700;
+}
+
+.header-bar i {
+    font-size: 1.8em;
+    margin-right: 15px;
+    color: #333333;
+    transform: rotate(0);
+    transition: transform 0.3s ease-out;
+}
+
+.header-bar:hover i {
+    transform: rotate(5deg);
+}
+
+.header-bar h1 {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 1.1em;
+}
+
+.product-table thead th {
+    text-align: left;
+    padding: 15px 20px;
+    background-color: #f8f8f8;
+    font-weight: 700;
+    color: #444;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.product-table tbody td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.product-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    cursor: pointer;
+}
+
+.product-table tbody tr:hover {
+    background-color: #fcfcfc;
+    transform: scale(1.005);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.status-active {
+    background-color: #d4edda;
+    color: #155724;
+}
+.status-active:hover {
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.1);
+}
+
+.status-pending {
+    background-color: #ffeeba;
+    color: #856404;
+}
+.status-pending:hover {
+    box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.1);
+}
+
+.status-unavailable {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+.status-unavailable:hover {
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1);
+}
+
+.action-cell {
+    white-space: nowrap;
+}
+
+.view-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    margin-right: 5px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: #FFD700;
+    justify-content: center;
+}
+
+.view-btn:hover {
+    background-color: #e6c200;
+    transform: scale(1.05);
+}
+.view1-btn {
+    display: block;
+    width: 100%;
+    padding: 8px 15px;
+    background: white;
+    color: #1a1a1a;
+    text-align: center;
+    border: 2px solid #FFD700;
+    border-radius: 10px;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: auto; /* keeps button pinned to bottom */
+    box-shadow: 0 2px 6px rgba(255, 215, 0, 0.15);
+    position: relative;
+}
+
+.view1-btn:hover {
+    background: #FFD700;
+    color: #1a1a1a;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.35);
+    transform: translateY(-3px);
+}
+
+.product-table tbody tr td:nth-child(3) {
+    font-weight: 600;
+}
+
+.stock-indicator {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-width: 40px;
+    text-align: center;
+}
+
+.stock-high {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.stock-medium {
+    background-color: #ffeeba;
+    color: #856404;
+}
+
+.stock-low {
+    background-color: #f8d7da;
+    color: #721c24;
+    animation: pulse-low 2s infinite ease-in-out;
+}
+
+@keyframes pulse-low {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.product-name-cell {
+    position: relative;
+    padding-left: 15px !important;
+    font-weight: 600;
+    font-size: 1.3em;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
+    mask-image: linear-gradient(to right, black 65%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to right, black 65%, transparent 95%);
+}
+
+.product-name-cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, 
+        rgba(0, 0, 0, 0.4) 30%, 
+        rgba(0, 0, 0, 0.1) 70%, 
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 1;
+}
+
+.product-name-cell span {
+    position: relative;
+    z-index: 2;
+}
+
+.product-table tbody tr:hover .product-name-cell {
+    background-size: 105% auto;
+    transition: background-size 0.5s ease-out;
+}
+
+.store-page-main {
+    padding: 0;
+}
+
+.store-info-section {
+    position: relative;
+    width: 100%;
+}
+
+.store-header-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.store-header-image-container .business-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.store-header-fade-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+    pointer-events: none;
+}
+
+.store-header-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.store-header-content h2 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.store-header-content p {
+    margin: 5px 0 0 0;
+    font-size: 1em;
+}
+
+.store-products-section {
+    padding: 20px;
+}
+
+.store-products-section .section-title {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.7);
+    padding-top: 5vh;
+    animation: fadeIn 0.4s ease;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 5vh auto;
+    padding: 30px;
+    border: none;
+    width: 95%; 
+    max-width: 900px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    position: relative;
+    animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.close-btn {
+    color: #95a5a6;
+    float: right;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1;
+    margin: -10px -10px 0 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #e74c3c;
+    text-decoration: none;
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.modal-flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+@media (min-width: 850px) {
+    .modal-flex-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.modal-image-container {
+    flex: 1.2;
+    padding: 20px;
+    background-color: #f7f9fb;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+#modalProductImage {
+    max-width: 100%;
+    max-height: 350px;
+    border-radius: 6px;
+    object-fit: contain;
+    transition: transform 0.4s ease-out;
+}
+
+.modal-content:hover #modalProductImage {
+    transform: scale(1.02);
+}
+
+.modal-details {
+    flex: 1.8;
+    padding: 0 10px;
+}
+
+#modalProductName {
+    font-size: 2em;
+    font-weight: 700;
+    color: #2c3e50; 
+    margin-bottom: 20px;
+    border-left: 4px solid gold;
+    padding-left: 15px;
+    line-height: 1.2;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+    color: #34495e;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #ecf0f1;
+    border-radius: 8px; 
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #2c3e50;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #FFD700;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+.btn {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    margin-left: 15px;
+}
+
+.btn-primary {
+    background-color: #FFD700;
+    color: #333;
+}
+
+.btn-primary:hover {
+    background-color: #e6c200;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(241, 196, 15, 0.4);
+}
+
+.btn-danger {
+    background-color: #e74c3c; 
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(231, 76, 60, 0.4);
+}
+
+.category-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: #e2e2e2;
+}
+
+.filter-btn.active {
+    background-color: gold;
+    color: #fff;
+}
+
+.add-product-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #FFD700;
+    color: #333;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.add-product-float-btn i {
+    font-size: 15px;
+    margin: 0; 
+    transition: margin-right 0.3s ease;
+    font-weight: bold;
+}
+
+.add-product-float-btn:hover {
+    width: 170px;
+    border-radius: 30px;
+    background-color: #e6c200;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    font-size: 16px;
+    padding: 0 15px;
+}
+
+.add-product-float-btn:hover i {
+    margin-right: 8px; 
+}
+
+.add-product-float-btn:active {
+    background-color: #e6c200;
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+#addProductForm .form-group select {
+    /* Existing Styles (kept) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-5.4H18.6c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.6c0%205%201.8%209.3%205.4%2012.9l128%20128c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4l128-128c3.8-3.5%205.6-7.8%205.6-12.8.2-5-1.5-9.2-5.4-12.9z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 14px top 50%; /* Adjusted position for padding */
+    background-size: 14px; /* Increased size slightly */
+
+    /* Aesthetic Enhancements */
+    background-color: #fff; /* Ensure white background */
+    border: 2px solid #ecf0f1; /* Match default input border */
+    border-radius: 8px; 
+    padding: 14px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    
+    /* Animation - Added Box Shadow */
+    transition: all 0.3s ease; 
+}
+
+/* Add an active/focus state animation using the gold color */
+#addProductForm .form-group select:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5); /* Glowing effect */
+    outline: none;
+    transform: translateY(-1px); /* Subtle lift animation */
+}
+
+/* Optional: Style the dropdown arrow to match the theme on focus */
+#addProductForm .form-group select:focus {
+    /* If you could dynamically change the SVG fill color, you would do it here. 
+       Since SVG in background-image is static, we'll enhance the overall border/shadow. */
+}
+
+#addProductForm .btn-success {
+    width: 100%;
+    background-color: gold;
+    color: white;
+    margin-top: 10px;
+}
+
+#addProductForm .btn-success:hover {
+    background-color: orange;
+    transform: translateY(-2px);
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .store-header-image-container {
+        height: 200px;
+    }
+    .store-header-content h2 {
+        font-size: 1.5em;
+    }
+    .store-header-content p {
+        font-size: 0.9em;
+    }
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.vendor-analytics {
+    padding: 20px;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.analytics-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.analytics-card i {
+    font-size: 2.5em;
+    color: gold;
+}
+
+.analytics-card .analytics-info {
+    flex-grow: 1;
+}
+
+.analytics-card .analytics-label {
+    margin: 0;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.analytics-card .analytics-value {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #333;
+}
+
+.analytics-card.chart-card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+}
+
+.analytics-card.chart-card .analytics-label {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#productPieChart {
+    max-width: 100%;
+    max-height: 200px;
+    width: 100%;
+    height: 100%;
+}
+
+.product-filters {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+    overflow-x: auto;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #666;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.filter-btn:hover {
+    border-color: #FFD700;
+    color: #333;
+    background-color: #fff8e1;
+}
+
+.filter-btn.active {
+    background-color: gold;
+    color: #333;
+    border-color: gold;
+    box-shadow: 0 2px 5px rgba(255, 215, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+.filter-btn.active:hover {
+    background-color: orange;
+    border-color: orange;
+    color: white;
+}
+.chat-modal {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 600px; 
+    height: 100%;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    
+    /* CRITICAL: Must be flex-column to stack Header, Grid, and Input vertically */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: bottom right;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                visibility 0s 0.4s;
+}
+
+.chat-modal.open {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+/* * CRITICAL FIX: The .chat-modal-content needs to take up the full height 
+ * and manage the internal flex layout if the parent is not the direct manager.
+ */
+.chat-modal-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ensures it fills the modal height */
+    height: 100%;
+}
+
+/* --- Layout Structure --- */
+
+.chat-header {
+    padding: 15px;
+    background-color: #FFD700;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    border-bottom: 3px solid #f0b500;
+    flex-shrink: 0;
+}
+
+.chat-body-grid {
+    /* CRITICAL: Allows the body to take up remaining height between header and input */
+    display: flex;
+    flex-grow: 1; 
+    overflow: hidden; 
+}
+
+/* Left Column: Thread List */
+.thread-list {
+    width: 35%;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    background-color: #f8f8f8;
+    flex-shrink: 0;
+}
+
+.thread-list .loading-threads,
+.thread-list .no-threads,
+.thread-list .error-threads {
+    padding: 15px;
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* --- THREAD ITEM STYLES --- */
+.thread-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #efefef;
+    transition: background-color 0.2s;
+    display: flex; 
+    align-items: center; 
+}
+
+.thread-item:hover {
+    background-color: #e9e9e9;
+}
+
+.thread-item.active {
+    background-color: #fffaf0;
+    border-left: 3px solid #FFD700;
+    padding-left: 12px;
+}
+
+.thread-avatar {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px; 
+    border: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+.thread-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.thread-item .thread-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.thread-item .thread-time {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Right Column: Chat Main */
+.chat-main {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-grow: 1; /* Ensures it takes up remaining space in the grid */
+}
+
+/* Updated Chat Messages Container */
+.chat-messages {
+    flex-grow: 1; /* CRITICAL: Makes messages container fill most of the height */
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #fffaf0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.chat-messages::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Message Styles --- */
+
+.chat-message {
+    max-width: 80%;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 18px;
+    line-height: 1.4;
+    position: relative;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    animation: cuteSlideIn 0.3s ease-out;
+}
+
+.chat-message .message-time {
+    display: block;
+    font-size: 0.65em;
+    opacity: 0.7;
+    margin-top: 3px;
+    text-align: right;
+}
+
+.chat-message.self {
+    background-color: #ffe680;
+    color: #333;
+    margin-left: auto;
+    border-top-right-radius: 4px;
+}
+
+.chat-message.self .message-time {
+    color: #888;
+}
+
+.chat-message.other {
+    background-color: #ffffff;
+    color: #333;
+    margin-right: auto;
+    border: 1px solid #eee;
+    border-top-left-radius: 4px;
+}
+
+/* --- Input Area --- */
+
+.chat-input {
+    padding: 12px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    flex-shrink: 0;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    height: 48px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 24px 0 0 24px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.chat-input input:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 0 1px #FFD700;
+}
+
+.chat-input button {
+    background-color: #FFD700;
+    color: #333;
+    border: none;
+    height: 48px;
+    width: 60px;
+    font-size: 1rem;
+    padding: 0 15px;
+    cursor: pointer;
+    border-radius: 0 24px 24px 0;
+    transition: background-color 0.2s, transform 0.1s;
+    font-weight: 600;
+}
+
+.chat-input button:hover {
+    background-color: #f0b500;
+}
+
+.chat-input button:active {
+    transform: scale(0.95);
+}
+
+.thread-list {
+    width: 35%; 
+    border-right: 1px solid #ddd;
+    overflow-y: auto; 
+    background-color: #f8f8f8;
+    flex-shrink: 0;
+}
+
+.thread-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #efefef;
+    transition: background-color 0.2s;
+    
+    /* CRITICAL: Use flex to align picture and text side-by-side */
+    display: flex; 
+    align-items: center; /* Vertically centers the avatar and text */
+}
+
+.thread-item:hover {
+    background-color: #e9e9e9;
+}
+
+.thread-item.active {
+    /* Highlights the currently selected chat */
+    background-color: #fffaf0;
+    border-left: 3px solid #FFD700;
+    padding-left: 12px;
+}
+
+/* --- Profile Picture (Avatar) --- */
+.thread-avatar {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; /* Makes it circular */
+    object-fit: cover;
+    margin-right: 10px; /* Space between picture and name */
+    border: 1px solid #eee;
+    flex-shrink: 0; /* Prevents the image from shrinking */
+}
+
+/* --- Name and Time Container --- */
+.thread-info {
+    flex-grow: 1; /* Allows it to take up the remaining width */
+    min-width: 0; /* Ensures content inside can truncate */
+}
+
+.thread-item .thread-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." if name is too long */
+}
+
+.thread-item .thread-time {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 2px;
+}
+
+
+@keyframes cuteSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- New Product Image Upload Styles (for Add Product Modal) --- */
+#newProductImageContainer {
+    /* Make the container a display area for the preview image */
+    width: 100%;
+    height: 300px; /* Define a fixed height for the upload area */
+    background-color: #f7f9fb;
+    border: 3px dashed #ddd; /* Visual cue for a clickable upload area */
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#newProductImageContainer:hover {
+    border-color: #FFD700;
+    background-color: #fff8e1;
+}
+
+#newProductImageContainer img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+#newProductImageContainer:hover img {
+    transform: scale(1.05);
+}
+
+/* Hide the actual file input field, as the container click handles it */
+#newProductImage {
+    display: none;
+}
+
+/* Fix: Update the Success button to match the primary gold theme */
+#addProductForm .btn-success {
+    width: 100%;
+    background-color: #FFD700; /* Use primary theme color */
+    color: #333; /* Dark text for contrast */
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+#addProductForm .btn-success:hover {
+    background-color: #e6c200; /* Darker gold on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
+}

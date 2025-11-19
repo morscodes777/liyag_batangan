@@ -1,0 +1,868 @@
+:root {
+    --color-gold: #FFD700;
+    --color-black: #1A1A1A;
+    --color-white: #FFFFFF;
+    --color-primary-dark: #333333;
+    --color-background: #f0f2f5;
+    --color-error: #e74c3c;
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.95); opacity: 0; }
+    80% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.register-page {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    min-height: 700px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    background: var(--color-white);
+    animation: popIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.branding-container {
+    flex: 1;
+    background: url('../default/bg1.png') center center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.15), transparent);
+    animation: pulse-bg 15s infinite alternate;
+    opacity: 0.8;
+}
+
+@keyframes pulse-bg {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.5); opacity: 0.6; }
+}
+
+.logo-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.liyag {
+    color: var(--color-white);
+}
+
+.batangan {
+    color: var(--color-white);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 15px;
+    text-align: center;
+    z-index: 10;
+}
+
+.form-container {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.register-form {
+    width: 100%;
+    max-width: 500px;
+}
+
+.register-form h2 {
+    font-size: 2.2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1px;
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    min-height: 80px;
+    transition: margin-bottom var(--transition-speed) ease-out;
+    transform: scale(1);
+}
+
+.input-group:nth-child(1) { animation-delay: 0.1s; }
+.input-group:nth-child(2) { animation-delay: 0.2s; }
+.input-group:nth-child(3) { animation-delay: 0.3s; }
+.input-group:nth-child(4) { animation-delay: 0.4s; }
+.input-group:nth-child(5) { animation-delay: 0.5s; }
+.input-group:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
+    resize: none;
+    min-height: 50px;
+}
+
+.input-group input:hover,
+.input-group textarea:hover {
+    transform: scale(1.02);
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+    outline: none;
+    transform: scale(1.02);
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 30%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.1rem;
+}
+
+.address-group i.map-icon {
+    pointer-events: all;
+    cursor: pointer;
+    color: var(--color-primary-dark);
+    transition: color var(--transition-speed);
+}
+
+.address-group i.map-icon:hover {
+    color: var(--color-gold);
+}
+
+.password-container {
+    margin-bottom: 5px;
+}
+
+.password-container input {
+    padding-right: 80px;
+}
+
+.password-container i.toggle-password {
+    position: absolute;
+    left: auto;
+    right: 15px;
+    top: 30%;
+    transform: translateY(-50%);
+    pointer-events: all;
+    cursor: pointer;
+    color: var(--color-primary-dark);
+    transition: color var(--transition-speed);
+    z-index: 10;
+}
+
+.password-container i.toggle-password:hover {
+    color: var(--color-gold);
+}
+
+.error-message {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    padding: 8px 12px;
+    background-color: var(--color-error);
+    color: var(--color-white);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-align: left;
+    max-width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transform: translateX(10px) scale(0.9);
+    white-space: nowrap;
+}
+
+.error-message::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid var(--color-error);
+}
+
+.input-group.invalid .error-message {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(10px) scale(1);
+    top: 0;
+    right: -10px;
+}
+
+.input-group.invalid input,
+.input-group.invalid textarea {
+    border-color: var(--color-error);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-gold);
+    color: var(--color-black);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
+    margin-top: 20px;
+}
+
+.submit-btn i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #e5c100;
+    transform: translateY(-2px);
+}
+
+.register-link-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.register-link-text a {
+    color: var(--color-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed);
+}
+
+.register-link-text a:hover {
+    color: green;
+    text-decoration: underline;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeInModal 0.3s forwards;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: var(--color-white);
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.3s forwards;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-content button {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.map-modal-content {
+    max-width: 800px;
+    position: relative;
+}
+
+.modal-title {
+    color: var(--color-primary-dark);
+    margin-bottom: 15px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.map-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.map-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity var(--transition-speed);
+}
+
+.select-btn {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+}
+
+.cancel-btn {
+    background-color: #ccc;
+    color: var(--color-primary-dark);
+}
+
+@media (max-width: 800px) {
+    .register-page {
+        flex-direction: column;
+        width: 95%;
+        min-height: auto;
+    }
+
+    .branding-container {
+        min-height: 200px;
+        padding: 30px 20px;
+    }
+
+    .logo-title {
+        font-size: 3rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .form-container {
+        padding: 30px 20px;
+        flex: 1;
+    }
+    
+    .error-message {
+        top: 100%;
+        left: 0;
+        right: auto;
+        transform: translateY(5px) scale(0.9);
+        white-space: normal;
+        max-width: 95%;
+    }
+
+    .error-message::before {
+        left: 10%;
+        top: -8px;
+        transform: none;
+        border-top: none;
+        border-right: none;
+        border-bottom: 8px solid var(--color-error);
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+    }
+
+    .input-group.invalid .error-message {
+        transform: translateY(5px) scale(1);
+    }
+}
+
+#map {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#mapModal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.map-modal-content {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    animation: pop-up 0.3s ease-out;
+    position: relative;
+}
+
+@keyframes pop-up {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-title {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: 15px;
+}
+
+.map-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.map-btn {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.current-address-display {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    padding: 10px 0;
+    margin: 0;
+    min-height: 30px;
+}
+
+.select-btn {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+}
+.select-btn:hover {
+    background-color: #e5c100;
+    transform: translateY(-1px);
+}
+
+.cancel-btn {
+    background-color: #ccc;
+    color: var(--color-primary-dark);
+}
+.cancel-btn:hover {
+    background-color: #bbb;
+    transform: translateY(-1px);
+}
+
+.leaflet-control-geocoder.leaflet-bar {
+    box-shadow: none;
+    border: none;
+    background: none;
+    width: 100%;
+    max-width: 400px;
+}
+
+.leaflet-control-geocoder-form {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.leaflet-control-geocoder-form:hover {
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+.leaflet-control-geocoder-form input {
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 10px 10px 10px 45px;
+    font-size: 1rem;
+    height: auto;
+    width: calc(100% - 41px);
+    vertical-align: top;
+}
+
+.leaflet-control-geocoder-icon {
+    background-color: var(--color-gold) !important;
+    border-radius: 8px 0 0 8px !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 41px;
+    height: 100%;
+    line-height: 41px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.leaflet-control-geocoder-form.leaflet-control-geocoder-expanded .leaflet-control-geocoder-icon {
+    border-radius: 8px 0 0 8px;
+}
+
+#center-marker {
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 55px);
+    background-image: url('https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png');
+    background-size: contain;
+    width: 25px;
+    height: 41px;
+    transform: translate(-50%, -100%);
+    z-index: 601;
+    pointer-events: none;
+    display: none;
+}
+
+.leaflet-container {
+    z-index: 600;
+}
+
+.otp-modal-content {
+    /* Larger modal for better spacing */
+    max-width: 450px; 
+    padding: 40px;
+    border-radius: 15px;
+    border-top: 5px solid var(--color-gold); /* Gold highlight */
+}
+
+.otp-modal-content .modal-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.otp-message {
+    font-size: 1.05rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 30px;
+    line-height: 1.5;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.otp-message strong {
+    color: var(--color-gold);
+    font-weight: 700;
+}
+
+#otp-timer {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--color-error);
+    margin-left: 5px;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+/* OTP Input Group Styling */
+.otp-group {
+    /* Override min-height for focused input look */
+    min-height: 70px; 
+    margin-bottom: 20px;
+}
+
+.otp-group input#otp_code {
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 15px; /* Spacing out the 6 digits */
+    padding: 20px 15px 20px 45px;
+    border-color: #ccc;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.otp-group input#otp_code:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.4);
+    transform: scale(1.01);
+}
+
+.otp-group i {
+    top: 50%;
+    font-size: 1.3rem;
+}
+
+/* Verification Button (Reuses .submit-btn style) */
+#verify-btn {
+    margin-top: 10px;
+}
+
+/* Resend Button Styling */
+#resend-otp-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background-color: transparent;
+    border: 2px solid #ccc;
+    color: #666;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all var(--transition-speed);
+}
+
+#resend-otp-btn:not([disabled]):hover {
+    background-color: #eee;
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+#resend-otp-btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+    color: #999;
+}
+
+/* Cancel Link Styling */
+.cancel-link-text {
+    margin-top: 20px;
+}
+
+.cancel-link-text a {
+    color: var(--color-error);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.cancel-link-text a:hover {
+    color: #a73327;
+}
+
+/* Animation for the form elements */
+.otp-form > * {
+    animation: slideInDown 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+.otp-form > *:nth-child(1) { animation-delay: 0.1s; } /* Hidden Email (no visible animation) */
+.otp-form > *:nth-child(2) { animation-delay: 0.2s; } /* OTP Input */
+.otp-form > *:nth-child(3) { animation-delay: 0.3s; } /* Verify Button */
+.otp-form > *:nth-child(4) { animation-delay: 0.4s; } /* Resend Button */
+
+@keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* General Fade In (used for message) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.terms-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+.terms-row input[type="checkbox"] {
+    margin-top: 4px;
+    margin-right: 10px;
+    transform: scale(1.2); 
+    cursor: pointer;
+}
+
+.terms-row label {
+    padding-top: 1px;
+    font-size: 1em;
+    color: #333;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.terms-row a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-row a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure the action container has proper spacing */
+.profile-actions {
+    margin-top: 25px;
+    width: 100%;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
+
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* --- Terms Modal Specific Styles --- */
+/* --- Terms Modal Specific Styles --- */
+.terms-modal-content {
+    max-width: 650px; /* Slightly wider */
+    width: 90%;
+    text-align: left; /* Ensure all text within is left-aligned */
+}
+
+.modal-title {
+    text-align: center; /* Keep the title centered */
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.terms-content {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.terms-content ol {
+    padding-left: 20px; /* Standard indentation for the numbers */
+    margin: 0;
+}
+
+.terms-content li {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 0.95em;
+    list-style-position: inside; /* Crucial for keeping the numbers from indenting too far */
+    padding-left: 0; /* Ensures the text starts right after the number */
+}
+
+/* Style the Close button to match the gold theme */
+#closeTermsModal {
+    background-color: #ffd700; 
+    color: #333;
+    font-weight: 600;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    transition: background-color 0.2s;
+}
+
+#closeTermsModal:hover {
+    background-color: #e5c300;
+}
+
+/* Custom Checkbox Styling for Gold Accent */
+.terms-row input[type="checkbox"] {
+    /* Existing styles remain */
+    margin-top: 4px;
+    margin-right: 10px;
+    transform: scale(1.2); 
+    cursor: pointer;
+    /* Custom style for the checked state */
+    accent-color: #6c757d; /* Default color before checking */
+    transition: accent-color 0.3s ease-in-out;
+}
+
+.terms-row input[type="checkbox"].checked-gold {
+    accent-color: #ffd700 !important; /* Gold color when checked */
+}

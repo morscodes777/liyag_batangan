@@ -1,0 +1,463 @@
+/* == General Container & List == */
+
+
+.review-container {
+    max-width: 900px; /* Slightly wider container */
+    margin: 30px auto; /* Reduced top margin for better integration */
+    padding: 25px;
+    background: #f7f7f7; /* Lighter, warmer background */
+    border-radius: 12px; /* Smoother corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Softer, deeper shadow */
+    animation: fadeIn 0.5s ease-out; /* Fade-in effect */
+}
+
+.review-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between review items */
+}
+
+/* == Individual Review Item == */
+.review-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out product details and button */
+    padding: 18px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: 
+        transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), 
+        box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1),
+        border-color 0.3s;
+}
+
+.review-item:hover {
+    transform: translateY(-3px); /* Subtle lift on hover */
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.15); /* Gold-tinted shadow */
+    border-color: #FFD700; /* Subtle border highlight */
+}
+
+.review-item img {
+    width: 70px; /* Slightly smaller image */
+    height: 70px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px; /* Smoother corners on image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.track-link.floating {
+    /* Make the button float/fix at the bottom-left */
+    position: fixed;
+    bottom: 20px; /* Positioned above the back button */
+    right: 20px;
+    z-index: 1000;
+    /* Style the appearance based on the gold theme */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--gold);
+    color: var(--dark-text);
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    font-weight: 600;
+}
+.track-link.floating:hover {
+    background-color: var(--gold);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+.track-link.floating i {
+    font-size: 1.2em;
+}   
+
+.product-info-group {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.product-details {
+    /* Keep this flexible */
+}
+
+.product-details strong {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.product-details p {
+    margin: 2px 0;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* == Review Button == */
+.review-btn-link {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #FFD700; /* Gold color */
+    color: #1a1a1a; /* Dark text for contrast */
+    border-radius: 50px; /* Pill shape */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: 
+        background-color 0.3s ease, 
+        box-shadow 0.3s ease, 
+        transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.review-btn-link:hover {
+    background-color: #E6C800; /* Darker gold on hover */
+    transform: translateY(-1px); /* Little press effect */
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* == Empty State == */
+.no-products {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 1.2em;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* == Floating Back Link (Modernized) == */
+.back-link.floating {
+    position: fixed;
+    bottom: 30px; /* Slightly higher */
+    left: 30px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* Softer border */
+    color: #444;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    transition: 
+        background-color 0.3s, 
+        box-shadow 0.3s, 
+        transform 0.2s, 
+        color 0.3s, 
+        border-color 0.3s;
+    font-weight: 600;
+}
+
+.back-link.floating:hover {
+    background-color: #FFD700; /* Gold background on hover */
+    border-color: #FFD700;
+    color: #1a1a1a;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.back-link.floating i {
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.back-link.floating:hover i {
+    color: #1a1a1a;
+}
+
+/* Hide the back button in the header by default */
+.tracker-header .back-link {
+    display: none;
+}
+
+/* == Animations == */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ========================================================================= */
+/* MODAL STYLES */
+/* ========================================================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+/* Review Content */
+.modal-content h2 {
+    color: #333;
+    margin-top: 0;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.review-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.existing-summary {
+    flex: 1 1 40%;
+    padding: 15px;
+    background-color: #fffde7;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.existing-summary p {
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+/* Star Rating Display */
+.stars {
+    color: #FFD700;
+    font-size: 1.2em;
+}
+
+/* Existing Comments */
+.existing-comments {
+    flex: 1 1 50%;
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.existing-comments h4 {
+    margin: 0 0 10px 0;
+    color: #444;
+}
+
+#commentsList p {
+    font-size: 0.9em;
+    color: #777;
+    padding: 5px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.comment-item {
+    padding: 5px 0;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: #333;
+    margin-right: 10px;
+}
+
+/* User Input Form */
+#reviewForm h3 {
+    color: #FFD700;
+    margin: 20px 0 10px 0;
+}
+
+.user-rating {
+    font-size: 2.5em;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.user-rating .star {
+    color: #ccc; /* Default gray state */
+    transition: color 0.2s;
+}
+
+.user-rating .star.hovered,
+.user-rating .star.selected {
+    color: #FFD700;
+}
+
+#reviewForm label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+#reviewComment {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.submit-review-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFD700;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.submit-review-btn:hover {
+    background-color: #e6c800;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.message-status {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ========================================================================= */
+/* FLOATING LINKS ADJUSTMENT */
+/* ========================================================================= */
+.review-link.floating {
+    /* To place the new link next to the existing one */
+    bottom: 20px;
+    left: 200px; 
+}
+
+/* Move the original back link */
+.back-link.floating {
+    left: 20px;
+}
+
+.review-item.reviewed {
+    /* Override flex-direction for better layout without the button */
+    display: flex;
+    align-items: flex-start; /* Align content to the top */
+    justify-content: flex-start;
+    gap: 20px;
+    padding-right: 20px; /* Reset padding override */
+    position: relative;
+    overflow: hidden; /* For the status tag corner */
+}
+
+/* Remove hover effect from past review items */
+.review-item.reviewed:hover {
+    transform: none; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Keep a neutral shadow */
+    border-color: #eee;
+}
+
+.review-item.reviewed .product-details {
+    flex-grow: 1;
+}
+
+.user-review-summary {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.user-review-summary p {
+    margin: 5px 0;
+    color: #333;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+}
+
+.user-review-summary .stars-static i {
+    font-size: 1em;
+    margin-right: 2px;
+}
+
+.comment-text {
+    font-style: italic;
+    color: #666 !important; /* Use !important if needed to override */
+    margin-top: 8px !important;
+}
+
+/* Review Status Tag (Top Right Corner) */
+.review-status-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #333; /* Dark background */
+    color: #FFD700; /* Gold text/icon */
+    padding: 5px 15px;
+    border-bottom-left-radius: 8px;
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.review-status-tag i {
+    margin-left: 5px;
+}

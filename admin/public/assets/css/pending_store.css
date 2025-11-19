@@ -1,0 +1,187 @@
+/* === Modal Animation Keyframes === */
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes overlayFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* === Modal Container (Overlay) === */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* === Modal Content (The Box) === */
+.modal-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 900px; /* Wider for profile view */
+    width: 95%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    transform: scale(0.95);
+}
+
+/* === Modal Header === */
+.modal-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #333;
+}
+#closeModal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+#closeModal:hover {
+    color: #dc3545;
+}
+
+/* === NEW: Profile Layout Container === */
+.vendor-profile-layout {
+    display: flex;
+    gap: 30px;
+    min-height: 250px;
+}
+
+/* Vendor Details (Left Side) */
+.vendor-details-info {
+    flex: 2; /* Takes up 2/3 of the space */
+    padding-right: 20px;
+    border-right: 1px solid #eee;
+}
+.vendor-details-info h4 {
+    color: #ffc107;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+.vendor-details-info p {
+    margin: 8px 0;
+    font-size: 1em;
+    color: #555;
+}
+.vendor-details-info strong {
+    color: #333;
+    display: inline-block;
+    min-width: 120px;
+}
+
+/* Logo & Action (Right Side) */
+.vendor-logo-action {
+    flex: 1; /* Takes up 1/3 of the space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.vendor-logo-action img {
+    width: 150px; /* Fixed size for logo */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Circle shape for logo */
+    border: 4px solid #f0f0f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Document Display Area */
+#businessDocumentArea {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px dashed #ddd;
+    display: none; /* Hidden by default */
+}
+#businessDocumentArea h4 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* === NEW: Fixed Medium Size for Document Image === */
+.document-item img.document-img-medium {
+    width: 300px; /* Fixed width */
+    height: 300px; /* Fixed height */
+    object-fit: contain; /* Ensures the whole image is visible, padding with background if necessary */
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8; /* Light background for 'contain' effect */
+}
+
+/* Fallback for the old style (just in case) */
+.document-item img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+/* ================================================= */
+
+/* Action Buttons */
+.btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.btn-success { background-color: #28a745; color: white; border: none; }
+.btn-success:hover { background-color: #218838; transform: translateY(-1px); }
+.btn-danger { background-color: #dc3545; color: white; border: none; }
+.btn-danger:hover { background-color: #c82333; transform: translateY(-1px); }
+.btn-gold-outline { background-color: white; color: #ffd700; border: 2px solid #ffd700; }
+.btn-gold-outline:hover { background-color: #ffd700; transform: translateY(-1px); }
+
+.btn-document {
+    background-color: #ffd700; /* Blue for action */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    width: 100%;
+}
+.btn-document:hover {
+    background-color: #c69a00;
+    transform: translateY(-1px);
+}
+
+/* Vendor Status Tag Styling (from previous update) */
+.status-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.85em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.status-pending { background-color: #ffe0b2; color: #ff9800; }
+.status-approved { background-color: #c8e6c9; color: #4caf50; }
+.status-rejected { background-color: #ffcdd2; color: #f44336; }

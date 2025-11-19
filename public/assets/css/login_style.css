@@ -1,0 +1,418 @@
+:root {
+    --color-gold: #E7B10A; /* same Batangan gold tone from home */
+    --color-black: #1A1A1A;
+    --color-white: #FFFFFF;
+    --color-primary-dark: #2C2C2C;
+    --color-background: #F8F8F8;
+    --color-gray: #888;
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-page {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    min-height: 600px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    background: var(--color-white);
+    animation: pop-in 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    opacity: 0;
+}
+
+@keyframes pop-in {
+    0% { opacity: 0; transform: scale(0.9) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.branding-container {
+    flex: 1;
+    background: url('../default/bg1.png') center center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* add a gold shimmer overlay animation */
+.branding-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(231, 177, 10, 0.2),
+        rgba(0, 0, 0, 0.5)
+    );
+    mix-blend-mode: overlay;
+    animation: shimmer 8s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes shimmer {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+}
+
+/* keep the subtle animated gold glow */
+.animated-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(231, 177, 10, 0.25), transparent 70%);
+    animation: pulse-bg 10s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes pulse-bg {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.2); opacity: 0.5; }
+}
+
+.logo-title,
+.tagline {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes pulse-bg {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.logo-title {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.liyag {
+    color: var(--color-white);
+}
+
+.batangan {
+    color: var(--color-white);
+}
+
+.tagline {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    z-index: 10;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.login-form h2 {
+    font-size: 2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* float and scale slightly when hovered */
+.input-group:hover {
+    transform: scale(1.03);
+}
+
+/* input field with animated transitions */
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.4s ease,
+        transform 0.3s ease,
+        background-color 0.3s ease;
+    background: linear-gradient(145deg, #ffffff, #fafafa);
+}
+
+/* scale-up effect and glowing gold focus */
+.input-group input:focus {
+    border-color: #FFD700;
+    outline: none;
+    transform: scale(1.05);
+}
+
+/* input icons */
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray);
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* icons animate when input active */
+.input-group input:focus + i,
+.input-group:hover i {
+    color: #FFD700;
+    transform: translateY(-50%) scale(1.15);
+    
+}
+
+/* password eye icon */
+.password-container i.toggle-password {
+    right: 15px;
+    left: auto;
+    cursor: pointer;
+    color: var(--color-primary-dark);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.password-container i.toggle-password:hover {
+    color: #FFD700;
+}
+
+
+.forgot-password-link {
+    display: block;
+    text-align: right;
+    color: var(--color-primary-dark);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    text-decoration: none;
+}
+
+.forgot-password-link:hover {
+    color: var(--color-gold);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #FFD700;
+    color: var(--color-black);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    box-shadow: 0 4px 15px rgba(231, 177, 10, 0.4);
+}
+
+.submit-btn:hover {
+    background-color: #c9a400;
+    transform: translateY(-2px);
+}
+
+.register-link-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.register-link-text a {
+    color: var(--color-gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link-text a:hover {
+    text-decoration: underline;
+    color: var(--color-black);
+}
+
+@media (max-width: 800px) {
+    .login-page {
+        flex-direction: column;
+        width: 90%;
+        min-height: auto;
+        opacity: 0;
+        animation: pop-in 0.6s ease forwards;
+    }
+
+    .branding-container {
+        min-height: 220px;
+        padding: 30px 20px;
+    }
+
+    .logo-title {
+        font-size: 3rem;
+    }
+
+    .form-container {
+        padding: 30px 20px;
+    }
+}
+
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.modal-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: var(--color-white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    /* Initial animation state */
+    transform: scale(0.9) translateY(-20px);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+}
+
+.modal-overlay.active .modal-content {
+    /* Final animation state */
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* Close Button */
+.close-btn {
+    color: var(--color-gray);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--color-gold);
+}
+
+/* Header/Title */
+.modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+#modal-title {
+    color: var(--color-primary-dark);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Body Content */
+.modal-body p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.modal-form .input-group {
+    margin-bottom: 15px;
+}
+
+.modal-message-area {
+    min-height: 20px; /* Reserve space for message to prevent layout shift */
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Success State */
+#step3-success {
+    padding: 30px 0 10px;
+}
+
+.success-icon {
+    font-size: 4rem !important; 
+    line-height: 1;
+    margin-bottom: 15px !important;
+}
+
+/* Responsive adjustments for the modal */
+@media (max-width: 500px) {
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-header i {
+        font-size: 2.5rem;
+    }
+}

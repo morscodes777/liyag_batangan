@@ -1,0 +1,450 @@
+:root {
+    --gold-color: #ffd700; 
+    --gold-darker: #ccaa00; 
+    --text-dark: #333;
+    --text-light: #fff; 
+    --bg-light: #fff;
+    --bg-dark-card: #f9f9f9;
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.1);
+    --transition-fast: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body {
+    background-color: #fff6db;
+}
+
+
+
+
+/* Category Filter Aesthetic */
+.status-filter-section {
+    padding: 20px 0;
+}
+
+/* Order Card Aesthetic */
+.order-card {
+    border-radius: 15px;
+    box-shadow: var(--shadow-subtle);
+    border: none;
+    background-color: var(--bg-light);
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: var(--transition-fast);
+}
+
+.order-card:hover {
+    box-shadow: var(--shadow-hover);
+    border-left: 5px solid var(--gold-color);
+}
+
+.order-status-badge {
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-left: 10px;
+    animation: pulse-status 1.5s infinite alternate;
+    background-color: var(--gold-color);
+    color: var(--text-dark);
+}
+
+/* Status Tracker Animation and Aesthetic */
+.status-tracker {
+    padding-top: 25px; /* Increased top padding to accommodate line offset */
+    margin: 20px 0 30px 0;
+    position: relative;
+    border-top: none; /* Removed redundant top border, line handles connection */
+}
+
+.status-step {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+}
+
+.status-step .status-icon-wrapper {
+    background: #fff; /* Key fix: White background hides the line passing underneath */
+    border: 2px solid #ccc;
+    color: #ccc;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensures icon is drawn above the line */
+    transition: all 0.3s ease;
+}
+
+.status-step.completed .status-icon-wrapper {
+    background-color: var(--gold-darker);
+    border-color: var(--gold-darker);
+    color: var(--text-light);
+}
+
+.status-step.active .status-icon-wrapper {
+    background-color: var(--gold-color);
+    border-color: var(--gold-color);
+    color: var(--text-dark);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); 
+    transform: scale(1.1);
+    animation: active-glow 1.5s infinite alternate;
+}
+
+.status-step.active .status-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.status-tracker::before {
+    content: '';
+    position: absolute;
+    top: 42px; /* Adjusted top position to be centered on the icons */
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: #eee;
+    z-index: 1; /* Ensures the line is drawn below the icons */
+}
+
+/* Action Button Aesthetic */
+.view-order-details-btn {
+    background-color: var(--gold-color);
+    color: var(--text-dark);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    box-shadow: 0 4px 8px rgba(204, 170, 0, 0.3);
+}
+
+.view-order-details-btn:hover {
+    background-color: var(--gold-darker);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(204, 170, 0, 0.5);
+}
+
+/* Modal and Form Aesthetic */
+.modal-content {
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+#newOrderStatus {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+#newOrderStatus:focus {
+    border-color: var(--gold-color);
+    outline: none;
+}
+
+.status-update-form button.btn-primary {
+    background-color: var(--gold-darker);
+    color: var(--text-dark);
+    border: none;
+}
+
+.status-update-form button.btn-primary:hover {
+    background-color: var(--gold-color);
+}
+
+/* Keyframe Animations */
+@keyframes tracker-pulse {
+    0% { box-shadow: 0 0 0 0 var(--gold-lighter); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 240, 150, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 240, 150, 0); }
+}
+
+@keyframes badge-pulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.03); opacity: 1; }
+}
+
+order-product-details {
+    /* Ensures the product details are displayed */
+    display: block !important;
+    /* Basic styling to make the section stand out within the card */
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.order-product-details h2 {
+    /* Style for the product name */
+    font-size: 0.95rem;
+    color: #333;
+    margin: 5px 0 0;
+}
+
+.order-product-details .quantity {
+    /* Style for the quantity */
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 5px;
+}
+
+/* --- STATUS TRACKER BASE STYLES --- */
+
+/* Ensures the label is centered and positioned correctly below the icon */
+.status-label {
+    margin-top: 8px; /* Space between icon and text */
+    font-size: 0.85em;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+/* Base style for the link wrapper */
+.status-update-link {
+    display: flex; /* Makes the link wrap the icon and text vertically */
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none; /* Remove default link underline */
+}
+
+/* --- TEXT STYLING FOR ALL STEPS --- */
+
+/* Text for steps that are NOT active/completed (default/pending/future steps) */
+.status-step .status-label {
+    /* Set a neutral, slightly lighter color for non-active/non-completed text */
+    color: #6c757d; 
+    text-decoration: none;
+}
+
+/* Text styling for the ACTIVE step (currently 'Pending' in your image) */
+.status-step.active .status-label {
+    /* Match the bright yellow/orange glow */
+    color: #ffc107; 
+    font-weight: 600; /* Make it slightly bolder */
+    text-decoration: none; /* Crucial: No underline on the active step */
+}
+
+/* Text styling for COMPLETED steps (if they exist) */
+.status-step.completed .status-label {
+    /* Use a success or completed color, like a light gray or green */
+    color: #4CAF50; /* Example: Green for completed */
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* Replicate the blue, underlined style from your image for INACTIVE steps */
+.status-step:not(.active) .status-update-link {
+    color: #333; /* Blue text color */
+    text-decoration: none; /* Blue underline */
+}
+
+/* Override the above to make sure ACTIVE is always correct */
+.status-step.active .status-update-link {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+/* Ensure the link text inherits correctly */
+.status-step:not(.active) .status-label {
+    color: inherit; /* Text color comes from the parent link */
+}
+.category-card1 {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Removed fixed padding that might interfere with perfect square */
+    padding: 15px; /* Use a consistent padding */
+    width: 150px; /* Reduced width for a more standard category card size */
+    
+    /* --- KEY CHANGE FOR SQUARE SHAPE --- */
+    height: 150px; /* Set height equal to width */
+    /* Alternatively, use: aspect-ratio: 1 / 1; */
+    /* ---------------------------------- */
+
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none
+}
+
+/* Active filter state */
+.category-card1.active-filter {
+    border-color: #FFD700;
+    background-color: #fffde7;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+
+/* Optional hover effects */
+.category-card1:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.25);
+    border-color: #FFD700;
+}
+
+/* Icon + Text Styling */
+.category-card1 i {
+    font-size: 2.2em;
+    color: #FFD700;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.category-card1:hover i {
+    transform: scale(1.1);
+    color: #e6c200;
+}
+
+.category-card1 span {
+    font-size: 0.9em; /* Increased slightly for better visibility in a smaller card */
+    font-weight: 600;
+    color: #444;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+}
+
+.category-card:hover span {
+    color: #e6c200;
+}
+.vendor-payout-display {
+    /* Remove original stacking styling if present */
+    /* margin-top: 5px; */
+    /* border-top: 1px dashed #ddd; */
+    
+    /* Position the payout amount absolutely to the right */
+    position: absolute;
+    top: 0; /* Align to the top of the order details box */
+    right: 0; /* Align to the right side of the order card */
+    
+    text-align: right;
+    
+    /* Box style */
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #e8f5e9; /* Light green background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. Style the Payout Amount for Big, Green Display */
+.vendor-payout-display .payout-amount {
+    display: block;
+    color: #2e7d32; /* Dark Green */
+    font-weight: 700;
+    font-size: 1.5em; /* Make it significantly bigger */
+    margin-top: 5px;
+}
+
+.order-card .order-details {
+    display: flex; /* Enable flex container */
+    flex-direction: column; /* Keep items stacked vertically */
+    padding-right: 150px; /* Reserve space on the right for the payout box */
+    position: relative; /* Needed to absolutely position the payout block */
+}
+
+/* ---------------- MODAL STYLING ---------------- */
+#vendorOrderModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+#vendorOrderModal.active {
+    display: flex !important; /* Show modal when JS toggles the class */
+}
+
+.modal-content {
+    background: var(--bg-light);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 95%;
+    max-width: 700px;
+    padding: 30px;
+    animation: modal-fade-in 0.3s ease-out;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.2);
+    color: var(--gold-color);
+}
+
+/* Smooth fade-in animation */
+@keyframes modal-fade-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Modal inner content formatting */
+.modal-body-details {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.modal-body-details h3 {
+    margin-top: 15px;
+    color: var(--gold-darker);
+    font-weight: 600;
+}
+
+.items-list-box .modal-item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-summary-box p,
+.order-totals-box p {
+    margin: 5px 0;
+}
+
+.address-box {
+    background: #fff8e1;
+    border: 1px solid #ffd54f;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+}

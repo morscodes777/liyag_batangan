@@ -1,0 +1,486 @@
+/* public/assets/css/checkout_style.css */
+
+
+.checkout-main {
+    padding: 30px 5%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.step-card {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #ccc;
+    transition: all 0.3s ease-in-out;
+}
+
+.step-card h2 {
+    font-size: 1.5em; /* Slightly increased to 1.5em to look balanced with 2.1em main header */
+    color: #ffd700;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+}
+.step-card h2 i {
+    margin-right: 10px;
+    font-size: 1.4em;
+}
+
+/* Step activation/completion styles */
+.step-card:not(.active) {
+    display: none; 
+    opacity: 0;
+    transform: translateY(10px);
+}
+.step-card.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    border-left-color: #ffd700;
+    animation: fadeIn 0.5s ease-out;
+}
+.step-card.completed {
+    border-left-color: #3cb371; 
+}
+.step-card.completed h2 {
+    color: #3cb371;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form elements */
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    margin-top: 10px;
+}
+.customer-info {
+    background: #fff8e1;
+    padding: 10px;
+    border-left: 4px solid #ffd700;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.address-warning-text {
+    display: block;
+    margin-top: 10px;
+    color: #ffd700;
+    font-weight: 600;
+}
+
+/* Payment Options */
+.payment-option {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.payment-option:hover {
+    background: #f9f9f9;
+}
+.payment-option input[type="radio"] {
+    margin-right: 10px;
+}
+.payment-option label {
+    font-weight: 600;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.payment-option input[type="radio"]:checked + label {
+    color: #ffd700;
+}
+.payment-option .method-details {
+    font-size: 0.95em;
+}
+
+/* Review Items List */
+.review-items-list {
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.review-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+.review-item:last-child {
+    border-bottom: none;
+}
+.review-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 15px;
+}
+.review-item .item-info {
+    flex-grow: 1;
+}
+.review-item .item-price {
+    color: #ffd700;
+    font-weight: 600;
+}
+
+/* Summary */
+.final-summary p {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px dotted #eee;
+}
+.final-summary .grand-total-row {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #d35400; 
+    border-bottom: none;
+    padding-top: 15px;
+}
+.final-summary .grand-total-row span {
+    color: #d35400;
+}
+
+/* Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1em;
+}
+.next-step-btn, .place-order-btn {
+    background-color: #ffd700;
+    color: #333;
+}
+.next-step-btn:hover, .place-order-btn:hover {
+    background-color: #ffeb3b;
+}
+.next-step-btn:disabled, .place-order-btn:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+.prev-step-btn {
+    background-color: #f0f0f0;
+    color: #666;
+}
+.prev-step-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* Styles for the new address form modal */
+.address-form-container {
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+.address-form-container h3 {
+    font-size: 1.2em;
+    color: #ffd700;
+}
+.address-form-container textarea,
+.address-form-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+.address-form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+#mapModal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    z-index: 9999;
+    pointer-events: auto;
+}
+#mapModal.open {
+    display: flex !important;
+}
+
+/* ensure the modal content sits above overlay and receives pointer events */
+.map-modal-content {
+    width: min(1000px, 96%);
+    max-height: 90vh;
+    background: #fff;
+    border-radius: 10px;
+    overflow: visible;
+    position: relative;
+    z-index: 10000;
+    pointer-events: auto;
+    display: flex; /* Makes it a flex container */
+    flex-direction: column; /* Stacks children vertically */
+    padding: 20px; /* <--- NEW: Added padding for internal spacing */
+}
+
+/* map container sizing inside modal */
+#map {
+    width: 100%;
+    min-height: 420px;
+    height: 60vh; /* fallback height to ensure Leaflet can compute layout */
+    display: block;
+}
+
+
+/* prevent page scrolling when modal open */
+body.modal-open {
+    overflow: hidden;
+    touch-action: none;
+}
+
+@keyframes pop-up {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-title {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: 15px;
+}
+
+.map-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto; /* Push buttons to the bottom */
+}
+
+.map-btn {
+    flex-grow: 1;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.current-address-display {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    padding: 10px 0;
+    margin: 0;
+    min-height: 30px;
+}
+
+.select-btn {
+    background-color: gold;
+    color: var(--color-black);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.15);
+}
+
+.select-btn:hover,
+button.select-btn:hover {
+    background-color: #e5c100;
+    transform: translateY(-1px);
+}
+
+button.select-btn {
+    /* ensure <button class="select-btn"> specifically gets accessible focus styles */
+    background-color: var(--color-gold);
+    color: var(--color-black);
+    border: none;
+}
+
+button.select-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.25);
+}
+
+/* active/pressed state */
+button.select-btn:active,
+.select-btn:active {
+    transform: translateY(0);
+    opacity: 0.95;
+}
+
+/* cancel button improvements */
+.cancel-btn {
+    background-color: #ccc;
+    color: var(--color-primary-dark);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.cancel-btn:hover,
+button.cancel-btn:hover {
+    background-color: #bbb;
+    transform: translateY(-1px);
+}
+
+button.cancel-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.08);
+}
+
+.leaflet-control-geocoder.leaflet-bar {
+    box-shadow: none;
+    border: none;
+    background: none;
+    width: 100%;
+    max-width: 400px;
+}
+
+.leaflet-control-geocoder-form {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.leaflet-control-geocoder-form:hover {
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+.leaflet-control-geocoder-form input {
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 10px 10px 10px 45px;
+    font-size: 1rem;
+    height: auto;
+    width: calc(100% - 41px);
+    vertical-align: top;
+    box-sizing: border-box; /* Ensure correct sizing */
+}
+
+.leaflet-control-geocoder-icon {
+    background-color: var(--color-gold) !important;
+    border-radius: 8px 0 0 8px !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 41px;
+    height: 100%;
+    line-height: 41px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.leaflet-control-geocoder-form.leaflet-control-geocoder-expanded .leaflet-control-geocoder-icon {
+    border-radius: 8px 0 0 8px;
+}
+
+#center-marker {
+    position: absolute;
+    left: 50%;
+    /* Recalculate top position to be relative to the map element */
+    /* top: calc(50% + 55px); is highly dependent on other elements' heights. */
+    /* Since the map is now in a flex column, we'll keep the absolute positioning 
+       relative to the modal-content, but rely on the JS fix. */
+    top: 50%; 
+    background-image: url('https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png');
+    background-size: contain;
+    width: 25px;
+    height: 41px;
+    /* Adjust transform to center it precisely over the map center point */
+    transform: translate(-50%, calc(-50% - 10px)); 
+    z-index: 601;
+    pointer-events: none;
+    display: none;
+}
+
+.leaflet-container {
+    /* Ensure the map container layer is positioned absolutely relative to its parent 
+       when inside a modal or flex container to guarantee it draws correctly. */
+    position: relative;
+    /* This rule is sometimes necessary to fix tile clipping inside modals */
+    overflow: visible !important;
+}
+
+/* Ensure Leaflet's tile pane takes full space and is visible */
+.leaflet-pane {
+    z-index: 400 !important; /* Ensure the tile layer is above other modal content */
+}
+
+.checkout-main #map,
+.checkout-main .leaflet-container,
+.checkout-main .leaflet-pane,
+.checkout-main .leaflet-map-pane,
+#mapModal #map,
+#mapModal .leaflet-container,
+#mapModal .leaflet-pane,
+#mapModal .leaflet-map-pane {
+    display: block !important;
+    position: relative !important;
+    overflow: visible !important;
+    height: 60vh !important;
+    width: 100% !important;
+    z-index: 10000 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Ensure modal overlay & content always appear above other site layers */
+#mapModal {
+    z-index: 9999 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+#mapModal .map-modal-content {
+    z-index: 10000 !important;
+    background: #fff;
+    position: relative;
+}
+
+/* Restore scroll lock safety only inside checkout, not globally */
+body.modal-open.checkout-active {
+    overflow: hidden !important;
+    touch-action: none !important;
+}
+
+/* If other pages (like home) also use #map, this isolates checkout map behavior */
+.checkout-main #map {
+    isolation: isolate;
+    background: #f8f8f8;
+    border-radius: 8px;
+}

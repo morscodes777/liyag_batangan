@@ -1,0 +1,305 @@
+/* All Store Page CSS */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr; /* auto for header, 1fr for the rest of the space */
+}
+
+header {
+    grid-row: 1;
+}
+
+main {
+    grid-row: 2;
+    position:static; /* Essential for positioning children absolutely */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Map full screen */
+#all-stores-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Floating Button */
+.floating-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #FFD500;
+    color: black;
+    font-weight: 600;
+    border: none;
+    padding: 22px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.2s ease;
+}
+
+.floating-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Drawer (replaces floating-stores-section) */
+.stores-drawer {
+    position: fixed;
+    bottom: -100%; /* hidden by default */
+    right: 0;
+    width: 35%; /* 30-40% width */
+    max-width: 450px;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(6px);
+    border-radius: 12px 12px 0 0;
+    padding: 15px;
+    overflow-y: auto;
+    z-index: 2000;
+    box-shadow: -2px -4px 12px rgba(0,0,0,0.25);
+    transition: bottom 0.4s ease;
+}
+
+.stores-drawer.active {
+    bottom: 0; /* slides up */
+}
+
+.stores-drawer .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Store Card - REDESIGNED */
+.store-grid-single {
+    display: grid; /* Use grid for better card layout */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+    gap: 15px;
+    padding-top: 20px; /* Add some space above the first card */
+}
+
+.store-card-large {
+    position: relative; /* For absolute positioning of overlay */
+    height: 180px; /* Smaller fixed height for the card */
+    border-radius: 10px;
+    overflow: hidden; /* Ensures background image and overlay are clipped */
+    background-size: cover; /* Cover the entire card */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    display: flex; /* For centering content vertically */
+    align-items: flex-end; /* Align content to the bottom */
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.store-card-large:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+/* Overlay for readability - MODIFIED FOR OPACITY */
+.store-card-large::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Solid black overlay with 50% opacity */
+    z-index: 1;
+}
+
+.store-info {
+    position: relative; /* Bring content above the overlay */
+    z-index: 2;
+    padding: 15px;
+    color: #fff; /* White text for contrast */
+    width: 100%;
+}
+
+.store-info h3 {
+    font-size: 1.1em; /* Smaller font size */
+    margin: 0 0 5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    line-height: 1.2;
+    color: #fff;
+}
+
+.section-title h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.store-info .store-address {
+    font-size: 0.8em; /* Smaller font size */
+    color: rgba(255,255,255,0.8);
+    margin: 0 0 10px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit address to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.view-store-btn {
+    display: inline-block;
+    padding: 8px 15px; /* Adjust padding */
+    background: #FFD500;
+    color: #000;
+    font-weight: 600;
+    font-size: 0.9em; /* Smaller font size */
+    text-decoration: none;
+    border-radius: 5px; /* Slightly less rounded */
+    transition: background 0.2s ease;
+    white-space: nowrap;
+    margin-top: 5px;
+}
+
+.view-store-btn:hover {
+    background: #e6c200;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Adjust content so it has no extra padding */
+.leaflet-popup-content {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Optional: move popup closer to marker */
+.leaflet-popup {
+    margin-bottom: 15px;
+}
+.leaflet-popup-close-button {
+    display: none !important;
+}
+
+/* --- Responsive Mobile View --- */
+@media (max-width: 768px) {
+    .floating-btn {
+        right: 50%;
+        transform: translateX(50%);
+        padding: 15px 30px;
+    }
+
+    .stores-drawer {
+        width: 100%;
+        height: 70%;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .store-grid-single {
+        grid-template-columns: 1fr; /* Force single column on mobile */
+    }
+
+    .store-card-large {
+        height: 160px; /* Slightly smaller height on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .store-card-large {
+        height: 140px; /* Even smaller height on very small screens */
+    }
+    .store-info h3 {
+        font-size: 1em;
+    }
+    .store-info .store-address {
+        font-size: 0.75em;
+    }
+    .view-store-btn {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+}
+
+.filter-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.filter-controls label {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Custom Select Wrapper (to hide the default arrow and position the custom one) */
+.custom-select-wrapper {
+    position: relative;
+    /* Reset flex direction just for the wrapper inside filter-controls */
+    flex-direction: row; 
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+/* The actual select element */
+.custom-select {
+    appearance: none; /* Hide default arrow in most browsers */
+    -webkit-appearance: none; /* Hide default arrow in Safari */
+    -moz-appearance: none; /* Hide default arrow in Firefox */
+    
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px 40px 10px 15px; /* Extra padding for the custom arrow */
+    font-size: 16px;
+    color: #444;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    min-width: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.custom-select:hover {
+    border-color: #aaa;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.custom-select:focus {
+    border-color: #ff9900; /* Highlight color on focus */
+    box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.2);
+}
+
+/* Custom Arrow (styled using the wrapper's pseudo-element) */

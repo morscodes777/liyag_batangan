@@ -1,0 +1,145 @@
+:root {
+    --gold-color: #ffd700;
+    --dark-color: #333;
+    --light-color: #f7f7f7;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.receipt-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.8s ease-out;
+    border-top: 8px solid var(--gold-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseBorder {
+    0% { border-color: var(--gold-color); }
+    50% { border-color: #ffeb80; }
+    100% { border-color: var(--gold-color); }
+}
+
+.header {
+    text-align: center;
+    border-bottom: 2px dashed var(--dark-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    color: var(--gold-color);
+    margin: 0 0 5px 0;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.header p {
+    margin: 0;
+    color: var(--dark-color);
+    font-size: 0.9em;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.info-section span:first-child {
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+}
+
+.items-table th, .items-table td {
+    padding: 10px 0;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.items-table th {
+    color: var(--dark-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--gold-color);
+}
+
+.items-table td:last-child {
+    text-align: right;
+    font-weight: bold;
+}
+
+.total-row {
+    border-top: 3px double var(--dark-color);
+    padding-top: 15px;
+}
+
+.total-row td {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.total-row .grand-total {
+    color: var(--gold-color);
+    font-size: 1.5em;
+    text-align: right;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 2px dashed var(--dark-color);
+    font-size: 0.85em;
+    color: #666;
+}
+
+.receipt-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #ffd700; /* Use your brand color */
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+.receipt-btn:hover {
+    background-color: #c9a400;
+}

@@ -1,0 +1,657 @@
+@media (max-width: 479px) {
+    /* Product Grid: 2 Columns + Fixed Height/Vertical Scroll */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 0 15px;
+        justify-content: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-in-out;
+        
+        /* ENFORCE 2-ROW LIMIT */
+        height: 780px; 
+        overflow-y: auto;
+        
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+
+    /* Product Card - Full Style Set with Tablet Adjustments */
+    .product-card {
+        cursor: pointer;
+        background: linear-gradient(145deg, #ffffff, #fffbea);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f5e7b2;
+        transition: all 0.35s ease;
+        text-decoration: none;
+        color: inherit;
+        width: 200px;
+        height: 350px; 
+        min-height: auto; 
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+    .product-card img {
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .product-card h3 {
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s ease;
+    }
+    .product-card .price {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #2e7d32;
+        margin-bottom: 11px;
+    }
+    .product-card .product-description {
+        font-size: 0.6em;
+        color: #666;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .view-btn1 {
+        display: block;
+        width: 100%;
+        padding: 9px 15px;
+        background: white;
+        color: #1a1a1a;
+        text-align: center;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: auto; 
+        box-shadow: 0 2px 6px rgba(255, 215, 0, 0.15);
+        position: relative;
+    }
+}
+
+
+
+@media (min-width: 480px) {
+    /* Product Grid: 2 Columns + Fixed Height/Vertical Scroll */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 0 15px;
+        justify-content: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-in-out;
+        
+        /* ENFORCE 2-ROW LIMIT */
+        height: 780px; 
+        overflow-y: auto;
+        
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+
+    /* Product Card - Full Style Set with Tablet Adjustments */
+    .product-card {
+        cursor: pointer;
+        background: linear-gradient(145deg, #ffffff, #fffbea);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f5e7b2;
+        transition: all 0.35s ease;
+        text-decoration: none;
+        color: inherit;
+        width: 250px;
+        height: 400px; 
+        min-height: auto; 
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+    .product-card img {
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .product-card h3 {
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s ease;
+    }
+    .product-card .price {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #2e7d32;
+        margin-bottom: 11px;
+    }
+    .product-card .product-description {
+        font-size: 0.6em;
+        color: #666;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .view-btn1 {
+        display: block;
+        width: 100%;
+        padding: 9px 15px;
+        background: white;
+        color: #1a1a1a;
+        text-align: center;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: auto; 
+        box-shadow: 0 2px 6px rgba(255, 215, 0, 0.15);
+        position: relative;
+    }
+}
+
+/* =========================================== */
+/* 576-767px 🍎 */
+/* =========================================== */
+@media (min-width: 576px) {
+    /* Product Grid: Solid 2 columns + Fixed Height/Vertical Scroll */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 0 20px;
+        justify-content: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-in-out;
+        
+        /* ENFORCE 2-ROW LIMIT */
+        height: 780px; 
+        overflow-y: auto;
+        
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+
+    /* Product Card - Full Style Set */
+    .product-card {
+        cursor: pointer;
+        background: linear-gradient(145deg, #ffffff, #fffbea);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f5e7b2;
+        transition: all 0.35s ease;
+        text-decoration: none;
+        color: inherit;
+        width: 290px;
+        height: 430px;
+        min-height: auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+    .product-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .product-card h3 {
+        font-size: 1.1em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s ease;
+    }
+    .product-card .price {
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #2e7d32;
+        margin-bottom: 12px;
+    }
+    .product-card .product-description {
+        font-size: 0.85em;
+        color: #666;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .view-btn1 {
+        display: block;
+        width: 100%;
+        padding: 8px 15px;
+        background: white;
+        color: #1a1a1a;
+        text-align: center;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: auto; 
+        box-shadow: 0 2px 6px rgba(255, 215, 0, 0.15);
+        position: relative;
+    }
+}
+
+/* =========================================== */
+/* 768-991px (Tablet/Small Laptop) 💻 */
+/* =========================================== */
+@media (min-width: 768px) {
+    /* Product Grid: 3 Columns + Fixed Height/Vertical Scroll */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 0 25px;
+        justify-content: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-in-out;
+        
+        /* ENFORCE 2-ROW LIMIT */
+        height: 780px; 
+        overflow-y: auto;
+        
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+
+    /* Product Card - Full Style Set (Desktop/Original Fixed Height) */
+    .product-card {
+        cursor: pointer;
+        background: linear-gradient(145deg, #ffffff, #fffbea);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f5e7b2;
+        transition: all 0.35s ease;
+        text-decoration: none;
+        color: inherit;
+        width: 400px;
+        height: 420px;
+        min-height: auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+    .product-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .product-card h3 {
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s ease;
+    }
+    .product-card .price {
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #2e7d32;
+        margin-bottom: 12px;
+    }
+    .product-card .product-description {
+        font-size: 0.85em;
+        color: #666;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .view-btn1 {
+        display: block;
+        width: 100%;
+        padding: 8px 15px;
+        background: white;
+        color: #1a1a1a;
+        text-align: center;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: auto; 
+        box-shadow: 0 2px 6px rgba(255, 215, 0, 0.15);
+        position: relative;
+    }
+}
+
+/* =========================================== */
+/* 992-1199px (Desktop) 🖥️ */
+/* =========================================== */
+@media (min-width: 992px) {
+    /* Product Grid: 4 Columns + Fixed Height/Vertical Scroll */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 0 25px;
+        justify-content: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-in-out;
+        
+        /* ENFORCE 2-ROW LIMIT */
+        height: 780px; 
+        overflow-y: auto;
+        
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+
+    /* Product Card - Full Style Set */
+    .product-card {
+        cursor: pointer;
+        background: linear-gradient(145deg, #ffffff, #fffbea);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f5e7b2;
+        transition: all 0.35s ease;
+        text-decoration: none;
+        color: inherit;
+        width: 350px;
+        height: 420px;
+        min-height: auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+    .product-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .product-card h3 {
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s ease;
+    }
+    .product-card .price {
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #2e7d32;
+        margin-bottom: 12px;
+    }
+    .product-card .product-description {
+        font-size: 0.85em;
+        color: #666;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .view-btn1 {
+        display: block;
+        width: 100%;
+        padding: 8px 15px;
+        background: white;
+        color: #1a1a1a;
+        text-align: center;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: auto; 
+        box-shadow: 0 2px 6px rgba(255, 215, 0, 0.15);
+        position: relative;
+    }
+}
+
+/* =========================================== */
+/* 1200-1399px (Large Desktop) 🖥️➕ */
+/* =========================================== */
+@media (min-width: 1200px) {
+    /* Product Grid: 5 Columns + Fixed Height/Vertical Scroll */
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        padding: 0 25px;
+        justify-content: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-in-out;
+        
+        /* ENFORCE 2-ROW LIMIT */
+        height: 780px; 
+        overflow-y: auto;
+        
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+
+    /* Product Card - Full Style Set */
+    .product-card {
+        cursor: pointer;
+        background: linear-gradient(145deg, #ffffff, #fffbea);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f5e7b2;
+        transition: all 0.35s ease;
+        text-decoration: none;
+        color: inherit;
+        width: 280px;
+        height: 450px;
+        min-height: auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+    .product-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .product-card h3 {
+        font-size: 1.3em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s ease;
+    }
+    .product-card .price {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #2e7d32;
+        margin-bottom: 12px;
+    }
+    .product-card .product-description {
+        font-size: 0.8em;
+        color: #666;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .view-btn1 {
+        display: block;
+        width: 100%;
+        padding: 8px 15px;
+        background: white;
+        color: #1a1a1a;
+        text-align: center;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: auto; 
+        box-shadow: 0 2px 6px rgba(255, 215, 0, 0.15);
+        position: relative;
+    }
+}
+
+/* =========================================== */
+/* 1400px+ (Extra Large Desktop) 🚀 */
+/* =========================================== */
+@media (min-width: 1400px) {
+    /* Product Grid: 6 Columns + Fixed Height/Vertical Scroll */
+    .product-grid {
+        grid-template-columns: repeat(5, 1fr); 
+        gap: 8px;
+        padding: 0 25px;
+        justify-content: flex;
+        max-width: 1500px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-in-out;
+        
+        /* ENFORCE 2-ROW LIMIT */
+        height: 780px; 
+        overflow-y: auto;
+        
+        scrollbar-width: none;
+    }
+
+    /* Product Card - Full Style Set */
+    .product-card {
+        cursor: pointer;
+        background: linear-gradient(145deg, #ffffff, #fffbea);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f5e7b2;
+        transition: all 0.35s ease;
+        text-decoration: none;
+        color: inherit;
+        width: 250px;
+        height: 450px;
+        min-height: auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+    .product-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+    .product-card h3 {
+        font-size: 0.9em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s ease;
+    }
+    .product-card .price {
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #2e7d32;
+        margin-bottom: 12px;
+    }
+    .product-card .product-description {
+        font-size: 0.85em;
+        color: #666;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .view-btn1 {
+        display: block;
+        width: 100%;
+        padding: 8px 15px;
+        background: white;
+        color: #1a1a1a;
+        text-align: center;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: auto; 
+        box-shadow: 0 2px 6px rgba(255, 215, 0, 0.15);
+        position: relative;
+    }
+}

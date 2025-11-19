@@ -1,0 +1,213 @@
+.search-wrapper {
+    /* Main container styling - Border and shadow use #FFD700 */
+    background-color: #ffffff;
+    border: 2px solid #FFD700;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.15);
+    width: 100%;
+    max-width: 100%;
+    transition: 
+        box-shadow 0.4s ease, 
+        border-color 0.4s ease,
+        transform 0.3s ease;
+}
+
+.search-wrapper:hover {
+    transform: scale(1.02);
+    /* Stronger shadow on hover */
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.25);
+}
+
+.search-wrapper:focus-within {
+    /* Darker gold for focus border */
+    border-color: #e6c200;
+    /* Stronger, more intense focus shadow */
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.45);
+}
+
+.search-icon {
+    /* Icon color is the main gold */
+    font-size: 1.3em;
+    color: #FFD700;
+    margin-right: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.search-wrapper:focus-within .search-icon {
+    /* Icon color changes to darker gold on focus */
+    transform: rotate(15deg);
+    color: #e6c200;
+}
+
+.search-wrapper input {
+    /* Input field styling */
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+    background: transparent;
+    color: #333;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-wrapper input::placeholder {
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.search-wrapper:focus-within input::placeholder {
+    /* Placeholder text turns gold on focus */
+    color: #FFD700;
+}
+
+/* =============== Search Dropdown & Results Styling =============== */
+
+.search-results-dropdown {
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+    background-color: #fff;
+    /* Border color updated for consistency */
+    border: 2px solid #FFD700; 
+    border-top: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 400px; 
+    overflow-y: auto;
+    padding: 10px;
+    /* Changed to manage display via JS class */
+    /* display: none; */ 
+    border-radius: 10px;
+}
+
+.search-results-dropdown:not(.active) {
+    display: none;
+}
+
+.search-section {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.search-section h4 {
+    /* Color changed from blue (#007bff) to gold (#FFD700) */
+    color: #FFD700; 
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.search-section h4 i {
+    margin-right: 5px;
+}
+
+.results-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================================================= */
+/* UPDATED/NEW STYLES FOR THE CLICKABLE RESULT ITEM */
+/* ================================================= */
+
+.search-result-link {
+    /* This is the main clickable container for each store/product result */
+    display: flex;
+    align-items: center;
+    padding: 8px 10px; /* Added horizontal padding for alignment */
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+    margin: 2px 0; /* Slight margin for separation */
+    width: 100%; 
+    box-sizing: border-box;
+    cursor: pointer; /* Ensure the pointer is active for the whole container */
+}
+
+.search-result-link:hover {
+    /* Subtle gold background on hover for results */
+    background-color: #fff8e1; /* A very light gold/yellow shade */
+}
+
+.result-image {
+    /* Image on the left */
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 15px; /* Increased margin for separation */
+    border-radius: 6px; 
+    flex-shrink: 0; /* Prevents image from shrinking */
+    border: 1px solid #eee; /* Subtle border for better visibility */
+}
+
+.result-info {
+    /* Container for the name/details on the right */
+    flex-grow: 1; /* Allows info to take up remaining space */
+    min-width: 0; /* Prevents overflow issues with long text */
+}
+
+.result-info h5 {
+    /* Name/Title styling */
+    margin: 0;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* For long names */
+}
+
+.result-info p {
+    /* Price/Address/Subtitle styling */
+    margin: 0;
+    color: #777;
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* REMOVED: .search-result-item (Replaced by .search-result-link) */
+/* REMOVED: .search-result-item img (Replaced by .result-image) */
+/* REMOVED: .item-details strong (Replaced by .result-info h5) */
+/* REMOVED: .item-details small (Replaced by .result-info p) */
+
+/* ================================================= */
+
+.no-results {
+    color: #999;
+    font-style: italic;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.view-all-search {
+    display: block !important;
+    text-align: center;
+    padding: 8px;
+    margin-top: 10px;
+    /* Background color is a light gold/grey mix */
+    background-color: #fcf8e3; 
+    /* Text color changed from blue to gold (#FFD700) */
+    color: #FFD700;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    border: 1px solid #FFD700; /* Added a subtle gold border */
+}
+
+.view-all-search:hover {
+    /* Darker background on hover for the view all button */
+    background-color: #ffe082; 
+}

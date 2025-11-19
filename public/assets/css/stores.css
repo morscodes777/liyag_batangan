@@ -1,0 +1,402 @@
+/* base-style.css - Default Styles for All Screen Sizes (Mobile-First Base) */
+
+/* ------------------------------------------- */
+/* 1. PRODUCT GRID & CARD STYLES (Base)        */
+/* ------------------------------------------- */
+
+
+
+/* ------------------------------------------- */
+/* 2. FILTER BAR STYLES (Base)                 */
+/* ------------------------------------------- */
+
+.category-filter-container {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid #eee;
+}
+
+.category-filter {
+    display: flex;
+    position: relative;
+    z-index: 2;
+}
+
+.filter-btn {
+    background: white;
+    border: none;
+    border: 1px solid #e6c200;
+    padding: 8px 15px;
+    margin: 0 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.filter-btn.active {
+    color: #000;
+    font-weight: 600;
+}
+
+.filter-track {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #fff;
+    z-index: 1;
+    transition: width 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+/* ------------------------------------------- */
+/* 3. VENDOR STATS & RATING STYLES (Base)      */
+/* ------------------------------------------- */
+
+/* Vendor Statistics and Ratings Container */
+.vendor-stats-container {
+    display: flex;
+    gap: 15px;
+    padding: 0 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+.stats-card {
+    flex: 1 1 200px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    min-width: 150px;
+}
+
+.stats-icon-wrapper {
+    margin-right: 15px;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+/* Specific colors for icons */
+.icon-ratings {
+    color: #ffc107;
+}
+
+.icon-products {
+    color: #FFD700;
+}
+
+.stats-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-label {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 2px;
+}
+
+.stats-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #343a40;
+    line-height: 1.2;
+}
+
+.stats-subtext {
+    font-size: 0.9rem;
+    color: #28a745;
+    margin-top: 5px;
+    white-space: normal;
+}
+
+/* Responsive adjustments for stats (as included in original code) */
+@media (max-width: 600px) {
+    .vendor-stats-container {
+        flex-wrap: nowrap;
+        padding: 0 15px;
+    }
+    .stats-card {
+        padding: 15px;
+        min-width: 45%;
+    }
+    .stats-value {
+        font-size: 1.2rem;
+    }
+    .stats-icon-wrapper {
+        font-size: 2rem;
+    }
+}
+
+/* Star Rating Display */
+.star-display-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 1.9em;
+    cursor: pointer;
+    transition: transform 0.2s ease-out;
+}
+
+.star-display-wrapper:hover {
+    transform: scale(1.03);
+}
+
+.star-icon {
+    color: #e9ecef;
+    transition: color 0.3s ease, transform 0.2s ease;
+    transform-origin: center;
+}
+
+.star-icon.bi-star-fill,
+.star-icon.bi-star-half {
+    color: #FFD700;
+}
+
+.star-display-wrapper:hover .star-icon {
+    transform: scale(1.05);
+    color: #f7d247;
+}
+
+.star-icon:hover {
+    transform: scale(1.15);
+    color: #FFEA00;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.star-icon:hover ~ .star-icon {
+    transform: scale(1);
+    color: #e9ecef;
+}
+
+.product-card .product-rating-display .star-display-wrapper {
+    font-size: 1.5em;
+}
+
+.product-rating-display {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.review-count {
+    font-size: 1.2em;
+    color: #6c757d;
+}
+
+/* ------------------------------------------- */
+/* 4. CHAT MODAL STYLES (Base)                 */
+/* ------------------------------------------- */
+
+/* Modal Button Fix */
+.modal-content .close-button {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* CHAT TOGGLE BUTTON */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #FFD700;
+    color: #fff;
+    border: none;
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), background-color 0.2s;
+}
+.chat-toggle-btn:hover {
+    transform: scale(1.1);
+    background-color: #e6c200;
+}
+.chat-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+/* CHAT MODAL */
+.chat-modal {
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: bottom right;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                visibility 0s 0.4s;
+}
+
+.chat-modal.open {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.chat-header {
+    padding: 15px;
+    background-color: #FFD700;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    border-bottom: 3px solid #f0b500;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #fffaf0;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.chat-messages::-webkit-scrollbar {
+    display: none;
+}
+
+/* MESSAGE BUBBLES */
+.chat-message {
+    max-width: 80%;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 18px;
+    line-height: 1.4;
+    position: relative;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    animation: cuteSlideIn 0.3s ease-out;
+}
+
+.chat-message .message-time {
+    display: block;
+    font-size: 0.65em;
+    opacity: 0.7;
+    margin-top: 3px;
+    text-align: right;
+}
+
+/* Sender (Self) Message Styles */
+.chat-message.self {
+    background-color: #ffe680;
+    color: #333;
+    margin-left: auto;
+    border-top-right-radius: 4px;
+}
+
+.chat-message.self .message-time {
+    color: #888;
+}
+
+/* Other User Message Styles */
+.chat-message.other {
+    background-color: #ffffff;
+    color: #333;
+    margin-right: auto;
+    border: 1px solid #eee;
+    border-top-left-radius: 4px;
+}
+
+/* INPUT AREA */
+.chat-input-area {
+    padding: 12px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    height: 48px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 24px 0 0 24px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.chat-input-area input:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 0 1px #FFD700;
+}
+
+.chat-input-area button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    height: 48px;
+    width: 60px;
+    font-size: 1.2rem;
+    padding: 0 15px;
+    cursor: pointer;
+    border-radius: 0 24px 24px 0;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.chat-input-area button:hover {
+    background-color: #218838;
+}
+.chat-input-area button:active {
+    transform: scale(0.95);
+}
+
+/* ------------------------------------------- */
+/* 5. KEYFRAME ANIMATIONS                      */
+/* ------------------------------------------- */
+
+/* Product Grid Fade In */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Chat Message Slide In */
+@keyframes cuteSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

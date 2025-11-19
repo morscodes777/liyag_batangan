@@ -1,0 +1,456 @@
+/* public/assets/css/track_order.css */
+
+:root {
+    --gold: #FFD700;
+    --dark-gold: #ccad00;
+    --background: #f4f4f9;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --dark-text: #1a1a1a;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+/* ======================================= */
+/* Floating Back Button Styles - START     */
+/* ======================================= */
+.review-link.floating {
+    /* Make the button float/fix at the bottom-left */
+    position: fixed;
+    bottom: 20px; /* Positioned above the back button */
+    right: 20px;
+    z-index: 1000;
+    /* Style the appearance based on the gold theme */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--gold);
+    color: var(--dark-text);
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    font-weight: 600;
+}
+.review-link.floating:hover {
+    background-color: var(--gold);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+.review-link.floating i {
+    font-size: 1.2em;
+}   
+
+.back-link.floating {
+    /* Make the button float/fix at the bottom-left */
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    /* Style the appearance based on the gold theme */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--gold);
+    color: var(--dark-text);
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    font-weight: 600;
+}
+
+.back-link.floating:hover {
+    background-color: var(--gold);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.back-link.floating i {
+    font-size: 1.2em;
+}
+
+/* Hide the back button in the header by default */
+.tracker-header .back-link {
+    display: none;
+}
+
+/* ======================================= */
+/* Floating Back Button Styles - END       */
+/* ======================================= */
+
+
+/* Header and Layout */
+.order-tracker-main {
+    max-width: 1000px;
+    margin:  auto;
+    padding: 20px;
+}
+
+/* Order Card Design */
+.order-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-bottom: 60px; /* Ensure space for floating button */
+}
+
+.order-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    padding: 25px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+.order-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95em;
+}
+
+.order-id {
+    font-weight: 600;
+    color: var(--dark-gold);
+}
+
+.order-status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    /* REMOVED: animation: pulse 1.5s infinite; */
+}
+
+/* Status-Specific Colors and Animations */
+/* PULSE: #fce3a2 color: #a0522d */
+.status-pending { 
+    background-color: #fce3a2; 
+    color: #a0522d; 
+    animation: pulse-pending 1.5s infinite;
+}
+/* PULSE: #d1ffd1 color: #1e8449 */
+.status-approved { 
+    background-color: #d1ffd1; 
+    color: #1e8449; 
+    animation: pulse-approved 1.5s infinite;
+}
+/* PULSE: #cce7ff color: #3498db */
+.status-shipped { 
+    background-color: #cce7ff; 
+    color: #3498db; 
+    animation: pulse-shipped 1.5s infinite;
+}
+/* No pulse for 'Out for Delivery' and 'Delivered' */
+.status-outfordelivery { 
+    background-color: #fef0c7; 
+    color: var(--dark-gold); 
+    animation: none; 
+}
+.status-delivered { 
+    background-color: #d3f3d3; 
+    color: #28a745; 
+    animation: none; 
+}
+
+
+/* Status Tracker Timeline */
+.status-tracker-container {
+    padding: 20px 0;
+    overflow-x: auto;
+}
+
+.status-tracker {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    position: relative;
+    min-width: 500px;
+}
+
+.status-tracker::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #e0e0e0;
+    z-index: 1;
+}
+
+.status-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s;
+}
+
+.status-step .status-icon-wrapper {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #e0e0e0;
+    color: var(--text-color);
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    transition: all 0.5s;
+    font-size: 14px;
+    border: 3px solid var(--card-bg);
+}
+
+.status-step.completed .status-icon-wrapper {
+    background-color: var(--dark-gold);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.status-step.active .status-icon-wrapper {
+    transform: scale(1.2);
+    background-color: var(--gold);
+}
+
+.status-step.active .status-label {
+    font-weight: 600;
+    color: var(--dark-gold);
+}
+
+.status-label {
+    font-size: 0.85em;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Details Link */
+.order-details-link {
+    text-align: right;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+}
+
+.order-details-link a {
+    color: var(--dark-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s;
+}
+
+.order-details-link a:hover {
+    opacity: 0.8;
+}
+
+/* No Orders */
+.no-orders {
+    text-align: center;
+    padding: 50px;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.no-orders i {
+    font-size: 40px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.shop-now-btn {
+    display: inline-block;
+    background-color: var(--gold);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.shop-now-btn:hover {
+    background-color: var(--dark-gold);
+}
+
+/* ======================================= */
+/* Animation Keyframes (Updated/New)       */
+/* ======================================= */
+
+/* Pending Pulse (using #fce3a2, a lighter version of the badge color for the shadow) */
+@keyframes pulse-pending {
+    0% { box-shadow: 0 0 0 0 rgba(252, 227, 162, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(252, 227, 162, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(252, 227, 162, 0); }
+}
+
+/* Approved Pulse (using #d1ffd1, a lighter version of the badge color for the shadow) */
+@keyframes pulse-approved {
+    0% { box-shadow: 0 0 0 0 rgba(209, 255, 209, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(209, 255, 209, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(209, 255, 209, 0); }
+}
+
+/* Shipped Pulse (using #cce7ff, a lighter version of the badge color for the shadow) */
+@keyframes pulse-shipped {
+    0% { box-shadow: 0 0 0 0 rgba(204, 231, 255, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(204, 231, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(204, 231, 255, 0); }
+}
+
+
+/* Media Query for Floating Button Spacing */
+@media (max-width: 576px) {
+    .order-tracker-main {
+        padding-bottom: 70px; /* Add extra space at the bottom on small screens */
+    }
+}
+
+.order-map-container {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.order-map-container h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+}
+
+.order-map {
+    height: 250px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    background-color: #e5e5e5;
+}
+
+.map-error {
+    text-align: center;
+    color: var(--dark-text);
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+/* Ensure floating button spacing for main content */
+.order-list-container {
+    /* Existing styles... */
+    padding-bottom: 60px; /* Ensure space for floating button */
+}
+
+.categories {
+    margin-top: 10px;
+    text-align: center;
+    padding-top: 0px; 
+    padding-bottom: 10px;
+}
+
+.category-grid1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: none;
+}
+
+.category-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.category-card1 {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Removed fixed padding that might interfere with perfect square */
+    padding: 15px; /* Use a consistent padding */
+    width: 150px; /* Reduced width for a more standard category card size */
+    
+    /* --- KEY CHANGE FOR SQUARE SHAPE --- */
+    height: 150px; /* Set height equal to width */
+    /* Alternatively, use: aspect-ratio: 1 / 1; */
+    /* ---------------------------------- */
+
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none
+}
+
+/* Active filter state */
+.category-card1.active-filter {
+    border-color: #FFD700;
+    background-color: #fffde7;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+
+/* Optional hover effects */
+.category-card1:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.25);
+    border-color: #FFD700;
+}
+
+/* Icon + Text Styling */
+.category-card1 i {
+    font-size: 2.2em;
+    color: #FFD700;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.category-card1:hover i {
+    transform: scale(1.1);
+    color: #e6c200;
+}
+
+.category-card1 span {
+    font-size: 0.9em; /* Increased slightly for better visibility in a smaller card */
+    font-weight: 600;
+    color: #444;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+}
+
+.category-card1:hover span {
+    color: #e6c200;
+}

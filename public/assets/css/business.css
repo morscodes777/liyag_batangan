@@ -1,0 +1,425 @@
+@keyframes slideInUp {
+from {
+    opacity: 0;
+    transform: translateY(20px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* Container for the 2-column layout */
+.resume-layout {
+display: grid;
+grid-template-columns: 3fr 1fr; /* Main content (75%) and Sidebar (25%) */
+gap: 30px;
+padding: 20px;
+background-color: #ffffff; /* White paper effect */
+border-radius: 12px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow */
+}
+
+/* Main Content Section - Business Info */
+.main-content, .document-section {
+padding: 0 10px;
+border-left: 5px solid #FFD700; /* Yellow line accent like a resume sidebar */
+margin-bottom: 30px;
+animation: slideInUp 0.6s ease-out both;
+}
+
+/* Document section animation delay */
+.document-section {
+    animation-delay: 0.2s;
+}
+
+/* Section Headings */
+.section-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #EEE;
+}
+
+/* Profile Row Adjustments for Spacing */
+.profile-info {
+    background: none;
+    padding: 0;
+    box-shadow: none;
+}
+.profile-row {
+    padding: 10px 0;
+    border-bottom: 1px dashed #DDD;
+}
+.profile-row:last-child {
+    border-bottom: none;
+}
+
+/* Sidebar Look */
+.sidebar {
+    background-color: #FFF8E1; /* Light cream/yellow for the sidebar */
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #666;
+    animation: slideInUp 0.6s ease-out 0.4s both;
+}
+.sidebar p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Form Button alignment */
+.profile-actions {
+    grid-column: 1 / span 2; /* Make the actions row span both columns */
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px dashed #DDD;
+    animation: slideInUp 0.6s ease-out 0.6s both;
+}
+
+/* Map button adjustment */
+#mapModal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    z-index: 9999;
+    pointer-events: auto;
+}
+#mapModal.open {
+    display: flex;
+}
+
+/* ensure the modal content sits above overlay and receives pointer events */
+.map-modal-content {
+    width: min(1000px, 96%);
+    max-height: 90vh;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    z-index: 10000;
+    pointer-events: auto;
+}
+
+/* map container sizing inside modal */
+#map {
+    width: 100%;
+    height: 60vh;
+    min-height: 320px;
+}
+
+/* prevent page scrolling when modal open */
+body.modal-open {
+    overflow: hidden;
+    touch-action: none;
+}
+
+@keyframes pop-up {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-title {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: 15px;
+}
+
+.map-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto; /* Push buttons to the bottom */
+}
+
+.map-btn {
+    flex-grow: 1;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.current-address-display {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    padding: 10px 0;
+    margin: 0;
+    min-height: 30px;
+}
+
+.select-btn {
+    background-color: gold;
+    color: var(--color-black);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.15);
+}
+
+.select-btn:hover,
+button.select-btn:hover {
+    background-color: #e5c100;
+    transform: translateY(-1px);
+}
+
+button.select-btn {
+    /* ensure <button class="select-btn"> specifically gets accessible focus styles */
+    background-color: var(--color-gold);
+    color: var(--color-black);
+    border: none;
+}
+
+button.select-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.25);
+}
+
+/* active/pressed state */
+button.select-btn:active,
+.select-btn:active {
+    transform: translateY(0);
+    opacity: 0.95;
+}
+
+/* cancel button improvements */
+.cancel-btn {
+    background-color: #ccc;
+    color: var(--color-primary-dark);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.cancel-btn:hover,
+button.cancel-btn:hover {
+    background-color: #bbb;
+    transform: translateY(-1px);
+}
+
+button.cancel-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.08);
+}
+
+.leaflet-control-geocoder.leaflet-bar {
+    box-shadow: none;
+    border: none;
+    background: none;
+    width: 100%;
+    max-width: 400px;
+}
+
+.leaflet-control-geocoder-form {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.leaflet-control-geocoder-form:hover {
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+.leaflet-control-geocoder-form input {
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 10px 10px 10px 45px;
+    font-size: 1rem;
+    height: auto;
+    width: calc(100% - 41px);
+    vertical-align: top;
+    box-sizing: border-box; /* Ensure correct sizing */
+}
+
+.leaflet-control-geocoder-icon {
+    background-color: var(--color-gold) !important;
+    border-radius: 8px 0 0 8px !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 41px;
+    height: 100%;
+    line-height: 41px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.leaflet-control-geocoder-form.leaflet-control-geocoder-expanded .leaflet-control-geocoder-icon {
+    border-radius: 8px 0 0 8px;
+}
+
+#center-marker {
+    position: absolute;
+    left: 50%;
+    /* Recalculate top position to be relative to the map element */
+    /* top: calc(50% + 55px); is highly dependent on other elements' heights. */
+    /* Since the map is now in a flex column, we'll keep the absolute positioning 
+       relative to the modal-content, but rely on the JS fix. */
+    top: 50%; 
+    background-image: url('https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png');
+    background-size: contain;
+    width: 25px;
+    height: 41px;
+    /* Adjust transform to center it precisely over the map center point */
+    transform: translate(-50%, calc(-50% - 10px)); 
+    z-index: 601;
+    pointer-events: none;
+    display: none;
+}
+
+.leaflet-container {
+    z-index: 600;
+}
+
+/* --- Terms and Conditions Styles --- */
+.terms-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+.terms-row input[type="checkbox"] {
+    margin-top: 4px;
+    margin-right: 10px;
+    transform: scale(1.2); 
+    cursor: pointer;
+}
+
+.terms-row label {
+    padding-top: 3px;
+    font-size: 0.9em;
+    color: #333;
+    line-height: 1.4;
+    cursor: pointer;;
+}
+
+.terms-row a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-row a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure the action container has proper spacing */
+.profile-actions {
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* --- General Modal Styles (Ensure these exist or are similar) --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
+
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* --- Terms Modal Specific Styles --- */
+/* --- Terms Modal Specific Styles --- */
+.terms-modal-content {
+    max-width: 650px; /* Slightly wider */
+    width: 90%;
+    text-align: left; /* Ensure all text within is left-aligned */
+}
+
+.modal-title {
+    text-align: center; /* Keep the title centered */
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.terms-content {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.terms-content ol {
+    padding-left: 20px; /* Standard indentation for the numbers */
+    margin: 0;
+}
+
+.terms-content li {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 0.95em;
+    list-style-position: inside; /* Crucial for keeping the numbers from indenting too far */
+    padding-left: 0; /* Ensures the text starts right after the number */
+}
+
+/* Style the Close button to match the gold theme */
+#closeTermsModal {
+    background-color: #ffd700; 
+    color: #333;
+    font-weight: 600;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    transition: background-color 0.2s;
+}
+
+#closeTermsModal:hover {
+    background-color: #e5c300;
+}
+
+/* Custom Checkbox Styling for Gold Accent */
+.terms-row input[type="checkbox"] {
+    /* Existing styles remain */
+    margin-top: 4px;
+    margin-right: 10px;
+    transform: scale(1.2); 
+    cursor: pointer;
+    /* Custom style for the checked state */
+    accent-color: #6c757d; /* Default color before checking */
+    transition: accent-color 0.3s ease-in-out;
+}
+
+.terms-row input[type="checkbox"].checked-gold {
+    accent-color: #ffd700 !important; /* Gold color when checked */
+}
